@@ -53,6 +53,36 @@ def verBiblioteca(arquivo_nome):
         )
 
 
+def atualizarLivro(arquivo_nome, nome, opcao, valor):
+    lista_livros = []
+    with open(arquivo_nome) as arquivo:
+        for a in arquivo:
+            lista_livros.append(a)
+    count = 0
+    for k in lista_livros:
+        if k.split(",")[0] == nome:
+            if opcao == "nome":
+                string_replace = k.replace(k.split(",")[0], valor)
+                lista_livros[count] = string_replace
+            elif opcao == "autor":
+                string_replace = k.replace(k.split(",")[1], valor)
+                lista_livros[count] = string_replace
+            elif opcao == "preço":
+                v = float(valor)
+                string_replace = k.replace(k.split(",")[2], str(v))
+                lista_livros[count] = string_replace
+            elif opcao == "genero":
+                string_replace = k.replace(k.split(",")[3], valor)
+                lista_livros[count] = string_replace
+        count += 1
+    with open(arquivo_nome, "w") as arquivo_2:
+        for l in lista_livros:
+            if l == lista_livros[len(lista_livros) - 1]:
+                arquivo_2.write(l.strip())
+            else:
+                arquivo_2.write(l)
+
+
 def removerLivro(arquivo_nome, nome):
     arquivo = open(arquivo_nome)
     check = 0

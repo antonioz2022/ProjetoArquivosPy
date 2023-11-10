@@ -12,6 +12,7 @@ def main():
         print("5 - Buscar livros por gênero")
         print("6 - Ver bibliotecar")
         print("7 - Busque pelo livro mais caro")
+        print("8 - Atualize algum livro da biblioteca")
         print("0 - Parar o programa")
         opção = int(input())
         if opção == 1:
@@ -39,6 +40,11 @@ def main():
             functions.verBiblioteca("books.txt")
         elif opção == 7:
             functions.livroMaisCaro("books.txt")
+        elif opção == 8:
+            nome = input("Digite o nome do livro que você deseja atualizar: ")
+            opcao = input("Digite o que você deseja atualizar no livro ('nome', 'preço', 'autor' ou 'genero'): ")
+            valor = input(f"Digite o novo {opcao} que ira substituir o antigo: ")
+            functions.atualizarLivro("books.txt", nome, opcao, valor)
         elif opção == 0:
             print("Desligando...")
         else:
