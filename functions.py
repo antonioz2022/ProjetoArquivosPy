@@ -67,6 +67,31 @@ def buscar(arquivo_nome, genero):
     arquivo.close()
 
 
+def livroMaisCaro(arquivo_nome):
+    mais_caro = 0
+    nome_mais_caro = []
+    with open(arquivo_nome) as arquivo:
+        for f in arquivo:
+            preço = float(f.strip().split(",")[2])
+            if preço > mais_caro:
+                mais_caro = preço
+    with open(arquivo_nome) as arquivo:
+        for j in arquivo:
+            nome = j.strip().split(",")[0]
+            preço = float(j.strip().split(",")[2])
+            if preço == mais_caro:
+                nome_mais_caro.append(nome)
+
+    if len(nome_mais_caro) > 1:
+        print("Mais de um livro com maior preço!")
+        print("Nomes:")
+        for n in nome_mais_caro:
+            print(n)
+    else:
+        print("Nome: ", nome_mais_caro[0])
+    print("Preço:", mais_caro, "R$")
+
+
 def gastosTotais(arquivo_nome):
     arquivo = open(arquivo_nome, "r")
     soma = 0
