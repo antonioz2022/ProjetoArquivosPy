@@ -1,3 +1,4 @@
-1984,George Orwell,25,romance
-Alice,Lewis Carroll,32,aventura
-Jhonny,amenadiel,32,romance
+1984,George Orwell,25,Romance
+Mary Cake,James Thrude,32,aventura
+Jhonny, jensen,32,romance
+Jon Walker,James Thrude,28.0,romance

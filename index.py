@@ -13,9 +13,19 @@ def main():
         print("0 - Parar o programa")
         opção = int(input())
         if opção == 1:
-            functions.adicionarLivro("books.txt")
+            nome = input("Digite o nome do livro: ")
+            autor = input("Digite o nome do autor do livro: ")
+            try:
+                preço = float(input("Digite o preço do livro: "))
+            except ValueError:
+                print("\nERRO!")
+                print("Preço tem que ser um número.")
+                continue
+            genero = input("Digite o genero do livro: ")
+            functions.adicionarLivro("books.txt", nome, autor, str(preço), genero)
         elif opção == 2:
-            functions.removerLivro("books.txt")
+            nome = input("Digite o nome do livro que você deseja remover: ")
+            functions.removerLivro("books.txt", nome)
         elif opção == 3:
             functions.agruparLivros("books.txt")
         elif opção == 4:
