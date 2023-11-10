@@ -3,18 +3,27 @@ def agruparLivros(arquivo_nome):
     arquivo = open(arquivo_nome, "r")
     for f in arquivo:
         arquivo_split = f.strip().split(",")
-        if arquivo_split[3].lower() not in dictionary_categorias:
+        genero = arquivo_split[3].lower()
+        if genero not in dictionary_categorias:
             lista_categorias = [arquivo_split[0]]
-            dictionary_categorias[arquivo_split[3].lower()] = lista_categorias
+            dictionary_categorias[genero] = lista_categorias
         else:
-            dictionary_categorias[arquivo_split[3]].append(arquivo_split[0])
+            dictionary_categorias[genero].append(arquivo_split[0])
     for j in dictionary_categorias:
         print(j.upper() + ":")
         with open(arquivo_nome) as arquivo_2:
             for a in arquivo_2:
                 arquivo_split = a.strip().split(",")
                 if arquivo_split[0] in dictionary_categorias[j]:
-                    print("Nome:", arquivo_split[0], "Autor(a):", arquivo_split[1], "Preço:", float(arquivo_split[2]), "R$")
+                    print(
+                        "Nome:",
+                        arquivo_split[0],
+                        "Autor(a):",
+                        arquivo_split[1],
+                        "Preço:",
+                        float(arquivo_split[2]),
+                        "R$",
+                    )
     arquivo.close()
 
 
