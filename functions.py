@@ -3,15 +3,18 @@ def agruparLivros(arquivo_nome):
     arquivo = open(arquivo_nome, "r")
     for f in arquivo:
         arquivo_split = f.strip().split(",")
-        if arquivo_split[3] not in dictionary_categorias:
+        if arquivo_split[3].lower() not in dictionary_categorias:
             lista_categorias = [arquivo_split[0]]
-            dictionary_categorias[arquivo_split[3]] = lista_categorias
+            dictionary_categorias[arquivo_split[3].lower()] = lista_categorias
         else:
             dictionary_categorias[arquivo_split[3]].append(arquivo_split[0])
     for j in dictionary_categorias:
         print(j.upper() + ":")
-        for k in dictionary_categorias[j]:
-            print(k)
+        with open(arquivo_nome) as arquivo_2:
+            for a in arquivo_2:
+                arquivo_split = a.strip().split(",")
+                if arquivo_split[0] in dictionary_categorias[j]:
+                    print("Nome:", arquivo_split[0], "Autor(a):", arquivo_split[1], "Preço:", float(arquivo_split[2]), "R$")
     arquivo.close()
 
 
@@ -24,6 +27,21 @@ def adicionarLivro(arquivo_nome, nome, autor, preço, genero):
         arquivo.write("\n" + nome + "," + autor + "," + preço + "," + genero)
     arquivo.close()
     arquivo_r.close()
+
+
+def verBiblioteca(arquivo_nome):
+    arquivo = open(arquivo_nome)
+    print("                           BIBLIOTECA")
+    for f in arquivo:
+        arquivo_split = f.strip().split(",")
+        print(
+            "Nome: " + arquivo_split[0] + ",",
+            "Autor(a): " + arquivo_split[1] + ",",
+            "Preço:",
+            float(arquivo_split[2]),
+            "R$,",
+            "Genero: " + arquivo_split[3],
+        )
 
 
 def removerLivro(arquivo_nome, nome):
@@ -63,7 +81,15 @@ def buscar(arquivo_nome, genero):
     for f in arquivo:
         arquivo_split = f.strip().split(",")
         if arquivo_split[3].lower() == genero.lower():
-            print(arquivo_split[0])
+            print(
+                "Nome:",
+                arquivo_split[0] + ",",
+                "Autor(a):",
+                arquivo_split[1] + ",",
+                "Preço:",
+                float(arquivo_split[2]),
+                "R$",
+            )
     arquivo.close()
 
 

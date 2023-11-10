@@ -10,7 +10,8 @@ def main():
         print("3 - Agrupe livros em gêneros")
         print("4 - Gastos totais")
         print("5 - Buscar livros por gênero")
-        print("6 - Busque pelo livro mais caro")
+        print("6 - Ver bibliotecar")
+        print("7 - Busque pelo livro mais caro")
         print("0 - Parar o programa")
         opção = int(input())
         if opção == 1:
@@ -35,6 +36,8 @@ def main():
             genero = input("Digite o genero que você deseja buscar:")
             functions.buscar("books.txt", genero)
         elif opção == 6:
+            functions.verBiblioteca("books.txt")
+        elif opção == 7:
             functions.livroMaisCaro("books.txt")
         elif opção == 0:
             print("Desligando...")
