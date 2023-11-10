@@ -1,0 +1,3 @@
+1984,George Orwell,25,romance
+Alice,Lewis Carroll,32,aventura
+Jhonny,amenadiel,32,romance
